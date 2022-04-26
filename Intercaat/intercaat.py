@@ -2,8 +2,7 @@
 
 import sys
 import argparse
-import numpy as np 
-import intercaat_functions as icaat
+import Intercaat.intercaat_functions as icaat
 
 def main():
     descr = '''
@@ -53,6 +52,7 @@ def main():
         sys.exit(1)
 
     args = parser.parse_args()
+    PDBFileName = args.PDBFileName
     arg2 = args.QueryChain.split(',')
     arg3 = args.InteractingChains.split(',')
     arg4 = int(args.MinInteractions)
@@ -65,10 +65,10 @@ def main():
         arg8 = arg8.split(',')
 
     try:
-        pdb = icaat.parse(args.PDBFileName, (arg2 + arg3 + arg8), arg9)
+        pdb = icaat.parse(PDBFileName, (arg2 + arg3 + arg8), arg9)
     except FileNotFoundError:
-        sys.exit(f'{args.pdb_filename} was not found')
-
+        sys.exit(f'{PDBFileName} was not found')
+    print(PDBFileName,arg2, arg3 )
     coordinates = []
     match = []
 
@@ -77,8 +77,8 @@ def main():
         coordinates.append([line[8], line[9], line[10]])
 
     # Creates 3D voronoi diagram and returns indices of neighboring atoms
-    contacts = icaat.run_voro(coordinates)
-
+    # contacts = icaat.run_voro(coordinates)
+    contacts =  icaat.voroPyhull(coordinates)
     # Creates a list (pdbAtomClass) that contains classes for all atoms analayzed 
     pdbAtomClass = icaat.appendAtomClasses(pdb)
 
@@ -124,9 +124,15 @@ def main():
 
     # Filters the list generated above (match) based on arg2 and arg4
     # Also displays interactions matrix based on arg5
-    newMatch = icaat.filterMatch(match, pdb, arg2, arg4, arg5)
-
-    print('  Query Chain    |Interacting Chains| Dist | AtomClasses')
-    for line in newMatch:
-        print(line)
+    newMatch, newInteractionRes, newInteractions = icaat.filterMatch(match, pdb, arg2, arg4, arg5)
+    count1 = 0
+    print('Res #   Interactions')
+    while count1 < len(newInteractions):
+        print('{0} {1:<5}  {2:<4}'.format(newInteractionRes[count1], newInteractions[count1][0], newInteractions[count1][1]))
+        count1 += 1
+    # print('  Query Chain    |Interacting Chains| Dist | AtomClasses')
+    # for line in newMatch:
+    #     print(line)
     return 
+if __name__ == "__main__":
+    main()

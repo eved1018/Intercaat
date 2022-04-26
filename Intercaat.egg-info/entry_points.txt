@@ -1,0 +1,3 @@
+[console_scripts]
+intercaat = Intercaat.intercaat:main
+

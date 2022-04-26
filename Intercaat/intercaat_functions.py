@@ -52,16 +52,14 @@ def run_voro(points):
 	return: (list of list of ints) each list contains the indices of neighboring atoms to the atom at that particular index
 	"""
 	config = ConfigParser()
-	config.read('./intercaatmaster/intercaat_config.ini')
+	config.read('Intercaat/intercaat_config.ini')
 	python_version = config.get('qvoronoi_path', 'run_python_version')
 
 	if python_version == 'no':
 		return voroC(points)
 	else:
-		try:
-			return voroPyhull(points)
-		except:
-			return voroPython(points)
+		return voroPyhull(points)
+		
 
 def voroC(points):
 	'''
@@ -94,7 +92,7 @@ def voroC(points):
 	qhullPath = filePath + config.get('qvoronoi_path', 'qvoronoi_bin')
 	qvoronoi  = config.get('qvoronoi_path', 'executable_name')
 	debug  =  config.get('qvoronoi_path', 'debug_qvoronoi')
-	print(qhullPath, qvoronoi)
+	# print(qhullPath, qvoronoi)
 
 	vorFi = subprocess.check_output('cat ' + textFile + ' | ' + qhullPath + qvoronoi, shell =True, text= True)
 	if debug == 'yes':
@@ -682,8 +680,8 @@ def filterMatch(match, pdb, arg2, arg4, arg5):
 		count1 = 0
 		# print('Res #   Interactions')
 		# while count1 < len(newInteractions):
-			# print('{0} {1:<5}  {2:<4}'.format(newInteractionRes[count1], newInteractions[count1][0], newInteractions[count1][1]))
-			# count1 += 1
+		# 	print('{0} {1:<5}  {2:<4}'.format(newInteractionRes[count1], newInteractions[count1][0], newInteractions[count1][1]))
+		# 	count1 += 1
 		newMatch.pop(len(newMatch)-1)
 
 	return newMatch, newInteractionRes, newInteractions
