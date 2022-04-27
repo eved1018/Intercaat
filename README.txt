@@ -7,7 +7,6 @@ between a query chain and an interacting chain(s)
 
 PRE-REQUISITES
 1. Python 3.8 or newer is required.
-2. Numpy is required
 3. Qhull is recommended since it is much faster. Qhull can be downloaded from here: http://www.qhull.org/download/.
 4. If you wish not to use Qhull, the Python package pyHull is used instead.
 

@@ -1,4 +1,5 @@
 import numpy as np
+import os
 from configparser import ConfigParser
 from pathlib import Path
 from pyhull.voronoi import VoronoiTess
@@ -51,9 +52,12 @@ def run_voro(points):
 	arg1:   (list of lists of strings) each list contains the coordinate of one atom
 	return: (list of list of ints) each list contains the indices of neighboring atoms to the atom at that particular index
 	"""
-	config = ConfigParser()
-	config.read('intercaat_config.ini')
-	python_version = config.get('qvoronoi_path', 'run_python_version')
+	if os.path.exists('intercaat_config.ini'):
+		config = ConfigParser()
+		config.read('intercaat_config.ini')
+		python_version = config.get('qvoronoi_path', 'run_python_version')
+	else:
+		python_version == 'yes'
 
 	if python_version == 'no':
 		return voroC(points)

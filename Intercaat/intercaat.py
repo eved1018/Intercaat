@@ -3,25 +3,6 @@ import sys
 import argparse
 import Intercaat.intercaat_functions as icaat
 
-def setup():
-    from pathlib import Path
-    import requests
-    import subprocess 
-
-    url = 'www.qhull.org/download/qhull-2020-src-8.0.2.tgz'
-    target_path = 'qhull-2020-src-8.0.2.tgz'
-
-    response = requests.get(url, stream=True)
-    if response.status_code == 200:
-        with open(target_path, 'wb') as f:
-            f.write(response.raw.read())
-
-    source_path = Path(__file__).resolve()
-    source_dir = source_path.parent
-    print(source_dir)
-    command = f"tar -xvf qhull-2020-src-8.0.2.tgz && cd qhull-2020.2 &&  make &&  export LD_LIBRARY_PATH=$PWD/lib:$LD_LIBRARY_PATH &&  make install && cp bin/qvoronoi {source_dir}/qhull/bin && cd .. && rm -r qhull-2020.2"
-    process = subprocess.run(command, shell=True)
-    return
 
 def main():
     descr = '''
@@ -97,7 +78,6 @@ def main():
 
     # Creates 3D voronoi diagram and returns indices of neighboring atoms
     contacts = icaat.run_voro(coordinates)
-    # contacts =  icaat.voroPyhull(coordinates)
     # Creates a list (pdbAtomClass) that contains classes for all atoms analayzed 
     pdbAtomClass = icaat.appendAtomClasses(pdb)
 

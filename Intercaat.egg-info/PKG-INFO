@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Intercaat
-Version: 1.12
+Version: 2.2
 Summary: This program uses a PDB file to identify the residues present in the interface between a query chain and an interacting chain(s)
 Home-page: https://gitlab.com/fiserlab.org/intercaat
 Author: Steve Grudman
@@ -18,7 +18,6 @@ between a query chain and an interacting chain(s)
 
 PRE-REQUISITES
 1. Python 3.8 or newer is required.
-2. Numpy is required
 3. Qhull is recommended since it is much faster. Qhull can be downloaded from here: http://www.qhull.org/download/.
 4. If you wish not to use Qhull, the Python package pyHull is used instead.
 
