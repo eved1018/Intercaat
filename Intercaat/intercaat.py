@@ -129,9 +129,20 @@ def main():
     while count1 < len(newInteractions):
         print('{0} {1:<5}  {2:<4}'.format(newInteractionRes[count1], newInteractions[count1][0], newInteractions[count1][1]))
         count1 += 1
-    # print('  Query Chain    |Interacting Chains| Dist | AtomClasses')
-    # for line in newMatch:
-    #     print(line)
+    print('  Query Chain    |Interacting Chains| Dist | AtomClasses')
+    for line in newMatch:
+        print(line)
+    pdb = PDBFileName.replace(".pdb","")
+    
+    with open(f"{pdb}_intercaat_output.txt", "w+") as f:
+        f.write("Res #   Interactions\n")
+        for res, ints in zip(newInteractionRes, newInteractions):
+            f.write(f"{res} {ints}\n")
+        f.write("Query Chain    |Interacting Chains| Dist | AtomClasses\n")
+        for i in newMatch:
+            f.write(i+"\n")
+    return
     return 
+    
 if __name__ == "__main__":
     main()

@@ -9,6 +9,9 @@ PRE-REQUISITES
 1. Python 3.8 or newer is required.
 3. Qhull is recommended since it is much faster. Qhull can be downloaded from here: http://www.qhull.org/download/.
 4. If you wish not to use Qhull, the Python package pyHull is used instead.
+INSTALL
+Intercaat can be installed using the pip package manager by running:
+pip install intercaat 
 
 TEST
 We included a sample PDB and the expected results from running the test commands below:
@@ -19,6 +22,12 @@ CONFIGURATION
 For ease of use the program is set to run with Python implementation as a default.
 To run with qhull, you must set "run_python_version = no" and specify the "qvoronoi_path" and
 "qhull_path" path to run the qvoronoi executable in the intercaat_config.ini file.
+
+API
+Intercaat can be imported into python using 'from intercaatWrapper import intercaat'
+The API call will return two dictionaries. The first contains the interface residue, 
+residue id and # of interactions. The second contains the query chain, interacting chains, distance and atom classes. 
+The command line arguments are accepted as function arguments.
 
 HELP
 The help function for INTERCAAT can be displayed by typing either intercaat or intercaat -h into 

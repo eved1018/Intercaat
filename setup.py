@@ -7,7 +7,7 @@ if __name__ == '__main__':
     with open("README.txt", "r", encoding="utf-8") as fh:
         long_description = fh.read()
     setup(name='Intercaat',
-        version="2.2",
+        version="2.4",
         description='This program uses a PDB file to identify the residues present in the interface between a query chain and an interacting chain(s)',
         url='https://gitlab.com/fiserlab.org/intercaat',
         author='Steve Grudman',

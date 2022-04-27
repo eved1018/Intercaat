@@ -57,7 +57,7 @@ def run_voro(points):
 		config.read('intercaat_config.ini')
 		python_version = config.get('qvoronoi_path', 'run_python_version')
 	else:
-		python_version == 'yes'
+		python_version = 'yes'
 
 	if python_version == 'no':
 		return voroC(points)
@@ -674,7 +674,7 @@ def filterMatch(match, pdb, arg2, arg4, arg5):
 			if i[1] >= arg4:
 				newInteractions.append(list(i))
 			count1 += 1
-		newMatch.append('--------------------------------')
+		# newMatch.append('--------------------------------')
 		newInteractionRes = []
 		count1 = 0
 		while count1 < (len(newMatch)-1):

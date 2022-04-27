@@ -1,3 +1,4 @@
+from hashlib import new
 import intercaat_functions as icaat
 import sys
 
@@ -73,21 +74,22 @@ def intercaat(pdb: str, qc: str, ic: str, mi: int = 4,di: str = "yes",cc: str = 
         count1 += 1
     # Filters the list generated above (match) based on arg2 and arg4
     # Also displays interactions matrix based on arg5
-    out1, out2, out3 = icaat.filterMatch(match, pdb, arg2, arg4, arg5)
-    return to_dict(out2, out3)
+    newMatch, newInteractionRes, newInteractions = icaat.filterMatch(match, pdb, arg2, arg4, arg5)
+    matches = matches_to_dict(newMatch)
+    interactions = interactions_to_dict(newInteractionRes, newInteractions)
+    return matches, interactions
 
 
-def tooFile(filename, newMatch, newInteractionRes,newInteractions):
-    with open(filename, "w+") as f:
-        f.write("Res #   Interactions\n")
-        for res, ints in zip(newInteractionRes, newInteractions):
-            f.write(f"{res} {ints}\n")
-        f.write("Query Chain    |Interacting Chains| Dist | AtomClasses\n")
-        for i in newMatch:
-            f.write(i+"\n")
-    return
-
-
-def to_dict(newInteractionRes, newInteraction):
-    return {f"{i}{l[0]}": [i,l[0],l[1]] for i, l in zip(newInteractionRes, newInteraction)}
-
+def interactions_to_dict(newInteractionRes, newInteraction):
+    return  {f"{i}{l[0]}": [i,l[0],l[1]] for i, l in zip(newInteractionRes, newInteraction)}
+    
+def matches_to_dict(newMatch):
+    # d=  {i.split("|")[0]: i.split("|")[1:] for i in newMatch}
+    d = {}
+    for i in newMatch:
+        key  = i.split("|")[0]
+        key = "".join(key.split())
+        value = i.split("|")[1:]
+        value = ["".join(s.split()) for s in value]
+        d[key] = value
+    return d
