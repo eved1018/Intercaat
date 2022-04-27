@@ -4,11 +4,11 @@ setup.py
 Intercaat/__init__.py
 Intercaat/intercaat.py
 Intercaat/intercaatWrapper.py
+Intercaat/intercaat_config.ini
 Intercaat/intercaat_functions.py
 Intercaat.egg-info/PKG-INFO
 Intercaat.egg-info/SOURCES.txt
 Intercaat.egg-info/dependency_links.txt
 Intercaat.egg-info/entry_points.txt
-Intercaat.egg-info/not-zip-safe
 Intercaat.egg-info/requires.txt
 Intercaat.egg-info/top_level.txt

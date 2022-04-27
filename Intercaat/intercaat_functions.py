@@ -52,7 +52,7 @@ def run_voro(points):
 	return: (list of list of ints) each list contains the indices of neighboring atoms to the atom at that particular index
 	"""
 	config = ConfigParser()
-	config.read('Intercaat/intercaat_config.ini')
+	config.read('intercaat_config.ini')
 	python_version = config.get('qvoronoi_path', 'run_python_version')
 
 	if python_version == 'no':
@@ -92,7 +92,7 @@ def voroC(points):
 	qhullPath = filePath + config.get('qvoronoi_path', 'qvoronoi_bin')
 	qvoronoi  = config.get('qvoronoi_path', 'executable_name')
 	debug  =  config.get('qvoronoi_path', 'debug_qvoronoi')
-	# print(qhullPath, qvoronoi)
+	print(qhullPath, qvoronoi)
 
 	vorFi = subprocess.check_output('cat ' + textFile + ' | ' + qhullPath + qvoronoi, shell =True, text= True)
 	if debug == 'yes':

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Intercaat
-Version: 1.2
+Version: 1.12
 Summary: This program uses a PDB file to identify the residues present in the interface between a query chain and an interacting chain(s)
 Home-page: https://gitlab.com/fiserlab.org/intercaat
 Author: Steve Grudman
@@ -20,17 +20,12 @@ PRE-REQUISITES
 1. Python 3.8 or newer is required.
 2. Numpy is required
 3. Qhull is recommended since it is much faster. Qhull can be downloaded from here: http://www.qhull.org/download/.
-4. If you wish not to use Qhull, the Python package SciPy is needed.
-
-INTERCAAT was developed using numpy 1.21.1 and scipy 1.7.0.
-They can be installed in $HOME with the below commands:
-pip install numpy --user   
-pip install scipy --user 
+4. If you wish not to use Qhull, the Python package pyHull is used instead.
 
 TEST
 We included a sample PDB and the expected results from running the test commands below:
-python intercaat.py -pdb 1cph.pdb -qc B -ic A 
-python intercaat.py -pdb 1cph.pdb -qc A,6,7,8,9 -ic B -di no -cc no -sr 1.7 
+intercaat -pdb 1cph.pdb -qc B -ic A 
+intercaat -pdb 1cph.pdb -qc A,6,7,8,9 -ic B -di no -cc no -sr 1.7 
 
 CONFIGURATION
 For ease of use the program is set to run with Python implementation as a default.
@@ -38,7 +33,7 @@ To run with qhull, you must set "run_python_version = no" and specify the "qvoro
 "qhull_path" path to run the qvoronoi executable in the intercaat_config.ini file.
 
 HELP
-The help function for INTERCAAT can be displayed by typing either intercaat.py or intercaat.py -h into 
+The help function for INTERCAAT can be displayed by typing either intercaat or intercaat -h into 
 your terminal. After doing so, instructions for how to run this program along with an 
 example for each switch will be shown.
 

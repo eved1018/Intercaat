@@ -1,3 +1,4 @@
 [console_scripts]
 intercaat = Intercaat.intercaat:main
+intercaat_setup = Intercaat.intercaat:setup
 
