@@ -24,10 +24,13 @@ To run with qhull, you must set "run_python_version = no" and specify the "qvoro
 "qhull_path" path to run the qvoronoi executable in the intercaat_config.ini file.
 
 API
-Intercaat can be imported into python using 'from intercaatWrapper import intercaat'
+Intercaat can be imported into python using 'from intercaat.intercaatWrapper import intercaat'
 The API call will return two dictionaries. The first contains the interface residue, 
 residue id and # of interactions. The second contains the query chain, interacting chains, distance and atom classes. 
 The command line arguments are accepted as function arguments.
+EX: 
+from intercaat.intercaatWrapper import intercaat
+matches, interactions = intercaat("1cph.pdb", "B", "A")
 
 HELP
 The help function for INTERCAAT can be displayed by typing either intercaat or intercaat -h into 

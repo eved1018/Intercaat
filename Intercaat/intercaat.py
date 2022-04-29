@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-import Intercaat.intercaat_functions as icaat
+import intercaat.intercaat_functions as icaat
 
 
 def main():
@@ -126,18 +126,16 @@ def main():
     newMatch, newInteractionRes, newInteractions = icaat.filterMatch(match, pdb, arg2, arg4, arg5)
     count1 = 0
     print('Res #   Interactions')
-    while count1 < len(newInteractions):
-        print('{0} {1:<5}  {2:<4}'.format(newInteractionRes[count1], newInteractions[count1][0], newInteractions[count1][1]))
-        count1 += 1
-    print('  Query Chain    |Interacting Chains| Dist | AtomClasses')
+    for res, ints  in zip(newInteractionRes, newInteractions):
+        print(f"{res} {ints[0]} {ints[1]}")
+    print('  Query Chain     |Interacting Chains| Dist | AtomClasses')
     for line in newMatch:
         print(line)
     pdb = PDBFileName.replace(".pdb","")
-    
     with open(f"{pdb}_intercaat_output.txt", "w+") as f:
         f.write("Res #   Interactions\n")
         for res, ints in zip(newInteractionRes, newInteractions):
-            f.write(f"{res} {ints}\n")
+            f.write(f"{res} {ints[0]} {ints[1]}\n")
         f.write("Query Chain    |Interacting Chains| Dist | AtomClasses\n")
         for i in newMatch:
             f.write(i+"\n")

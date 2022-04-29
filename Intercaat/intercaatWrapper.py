@@ -1,5 +1,4 @@
-from hashlib import new
-import intercaat_functions as icaat
+import intercaat.intercaat_functions as icaat
 import sys
 
 def intercaat(pdb: str, qc: str, ic: str, mi: int = 4,di: str = "yes",cc: str = "yes", sr: float = 1.4, vi = [], fp: str = "./", qhull = False):
