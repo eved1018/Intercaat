@@ -682,10 +682,5 @@ def filterMatch(match, pdb, arg2, arg4, arg5):
 				newInteractionRes.append(newMatch[count1][0:3])
 			count1 += 1
 		count1 = 0
-		# print('Res #   Interactions')
-		# while count1 < len(newInteractions):
-		# 	print('{0} {1:<5}  {2:<4}'.format(newInteractionRes[count1], newInteractions[count1][0], newInteractions[count1][1]))
-		# 	count1 += 1
-		newMatch.pop(len(newMatch)-1)
 
 	return newMatch, newInteractionRes, newInteractions

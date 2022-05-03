@@ -140,7 +140,7 @@ def main():
         for i in newMatch:
             f.write(i+"\n")
     return
-    return 
+     
     
 if __name__ == "__main__":
     main()
