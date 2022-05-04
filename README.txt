@@ -29,7 +29,7 @@ Intercaat can be imported into python using 'from intercaat.intercaatWrapper imp
 The API call will return two dictionaries. The first contains the interface residue, 
 residue id and # of interactions. The second contains the query chain, interacting chains, distance and atom classes. 
 The command line arguments are accepted as function arguments.
-EX: 
+ex. 
 from intercaat.intercaatWrapper import intercaat
 matches, interactions = intercaat("1cph.pdb", "B", "A")
 
