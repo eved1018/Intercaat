@@ -9,6 +9,7 @@ PRE-REQUISITES
 1. Python 3.8 or newer is required.
 3. Qhull is recommended since it is much faster. Qhull can be downloaded from here: http://www.qhull.org/download/.
 4. If you wish not to use Qhull, the Python package pyHull is used instead.
+
 INSTALL
 Intercaat can be installed using the pip package manager by running:
 pip install intercaat 
