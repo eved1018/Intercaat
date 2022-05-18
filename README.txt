@@ -9,6 +9,7 @@ PRE-REQUISITES
 1. Python 3.8 or newer is required.
 3. Qhull is recommended since it is much faster. Qhull can be downloaded from here: http://www.qhull.org/download/.
 4. If you wish not to use Qhull, the Python package pyHull is used instead.
+
 INSTALL
 Intercaat can be installed using the pip package manager by running:
 pip install intercaat 
@@ -28,7 +29,7 @@ Intercaat can be imported into python using 'from intercaat.intercaatWrapper imp
 The API call will return two dictionaries. The first contains the interface residue, 
 residue id and # of interactions. The second contains the query chain, interacting chains, distance and atom classes. 
 The command line arguments are accepted as function arguments.
-EX: 
+ex. 
 from intercaat.intercaatWrapper import intercaat
 matches, interactions = intercaat("1cph.pdb", "B", "A")
 
