@@ -124,7 +124,6 @@ def main():
     # Filters the list generated above (match) based on arg2 and arg4
     # Also displays interactions matrix based on arg5
     newMatch, newInteractionRes, newInteractions = icaat.filterMatch(match, pdb, arg2, arg4, arg5)
-    count1 = 0
     print('Res #   Interactions')
     for res, ints  in zip(newInteractionRes, newInteractions):
         print(f"{res} {ints[0]} {ints[1]}")

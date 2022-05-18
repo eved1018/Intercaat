@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Intercaat
-Version: 3.3
+Version: 3.6
 Summary: This program uses a PDB file to identify the residues present in the interface between a query chain and an interacting chain(s)
 Home-page: https://gitlab.com/fiserlab.org/intercaat
 Author: Steve Grudman
