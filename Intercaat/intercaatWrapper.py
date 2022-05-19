@@ -25,10 +25,12 @@ def intercaat(pdb: str, qc: str, ic: str, mi: int = 4,di: str = "yes",cc: str = 
         coordinates.append([line[8], line[9], line[10]])
 
     # Creates 3D voronoi diagram and returns indices of neighboring atoms
-    if qhull:
-        contacts = icaat.voroC(coordinates)
-    else:
-        contacts = icaat.voroPyhull(coordinates)
+    # if qhull:
+    #     contacts = icaat.voroC(coordinates)
+    # else:
+    #     contacts = icaat.voroPyhull(coordinates)
+    contacts = icaat.run_voro(coordinates)
+
     # Creates a list (pdbAtomClass) that contains classes for all atoms analayzed
     pdbAtomClass = icaat.appendAtomClasses(pdb)
 
@@ -83,12 +85,14 @@ def interactions_to_dict(newInteractionRes, newInteraction):
     return  {f"{i}{l[0]}": [i,l[0],l[1]] for i, l in zip(newInteractionRes, newInteraction)}
     
 def matches_to_dict(newMatch):
-    # d=  {i.split("|")[0]: i.split("|")[1:] for i in newMatch}
     d = {}
     for i in newMatch:
-        key  = i.split("|")[0]
-        key = "".join(key.split())
-        value = i.split("|")[1:]
-        value = ["".join(s.split()) for s in value]
-        d[key] = value
+        key, v1, v2, v3  = i.split("|")
+        res,position,  chain, atom  = key.split()
+        key = res + position
+        match,match_pos,  match_chain, match_atom = v1.split()
+        dist  = v2
+        atom_class_1, atom_class_2 = v3.split()
+        value = [chain, atom , match, match_pos, match_chain, match_atom, dist , atom_class_1, atom_class_2]
+        d.setdefault(key,[]).append(value)
     return d

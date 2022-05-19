@@ -29,6 +29,7 @@ Intercaat can be imported into python using 'from intercaat.intercaatWrapper imp
 The API call will return two dictionaries. The first contains the interface residue, 
 residue id and # of interactions. The second contains the query chain, interacting chains, distance and atom classes. 
 The command line arguments are accepted as function arguments.
+
 ex. 
 from intercaat.intercaatWrapper import intercaat
 matches, interactions = intercaat("1cph.pdb", "B", "A")
@@ -45,7 +46,7 @@ atom classes. The compatibility matrix, if displayed, shows each interface resid
 query chain and its corresponding quantity of atomic interactions.
 
 REFERENCE
-INTERCAAT: identifying interface residues be-tween macromolecules
+INTERCAAT: identifying interface residues between macromolecules
 
 AUTHORS
 Steven Grudman	steven.grudman@einsteinmed.org

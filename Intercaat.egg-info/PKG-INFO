@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Intercaat
-Version: 3.6
+Version: 3.11
 Summary: This program uses a PDB file to identify the residues present in the interface between a query chain and an interacting chain(s)
 Home-page: https://gitlab.com/fiserlab.org/intercaat
 Author: Steve Grudman
@@ -20,6 +20,7 @@ PRE-REQUISITES
 1. Python 3.8 or newer is required.
 3. Qhull is recommended since it is much faster. Qhull can be downloaded from here: http://www.qhull.org/download/.
 4. If you wish not to use Qhull, the Python package pyHull is used instead.
+
 INSTALL
 Intercaat can be installed using the pip package manager by running:
 pip install intercaat 
@@ -39,7 +40,8 @@ Intercaat can be imported into python using 'from intercaat.intercaatWrapper imp
 The API call will return two dictionaries. The first contains the interface residue, 
 residue id and # of interactions. The second contains the query chain, interacting chains, distance and atom classes. 
 The command line arguments are accepted as function arguments.
-EX: 
+
+ex. 
 from intercaat.intercaatWrapper import intercaat
 matches, interactions = intercaat("1cph.pdb", "B", "A")
 
@@ -55,7 +57,7 @@ atom classes. The compatibility matrix, if displayed, shows each interface resid
 query chain and its corresponding quantity of atomic interactions.
 
 REFERENCE
-INTERCAAT: identifying interface residues be-tween macromolecules
+INTERCAAT: identifying interface residues between macromolecules
 
 AUTHORS
 Steven Grudman	steven.grudman@einsteinmed.org

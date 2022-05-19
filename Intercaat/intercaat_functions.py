@@ -203,7 +203,7 @@ def parse(pdb_filename, include, dir):
 	for line in fh:
 		if 'MODEL' in line[0:6] and '2' in line[12:16]:
 			break
-		if "H" != line[13:14] and ('ATOM' in line[0:6] or 'HETATM' in line[0:6]) and line[21:22] in include \
+		if  ('ATOM' in line[0:6] or 'HETATM' in line[0:6]) and line[21:22] in include \
 		and 'H' not in line[76:78] and 'HOH' not in line[17:20] and 'NA' not in line[17:20]\
 		and (line[16:17] == ' ' or line[16:17] == 'A'):
 			atomTemp.append(line)
