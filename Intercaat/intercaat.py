@@ -1,5 +1,7 @@
 #!/usr/bin/env python
+import os
 import sys
+import os
 import argparse
 import intercaat.intercaat_functions as icaat
 
@@ -37,7 +39,7 @@ def main():
                         required to be considered as part of the interface. default = 4", default = 4)
     parser.add_argument("-di", "--DisplayInteractions", help = "Input: either -di yes or -di no. \
                         If yes, displays interactions matrix. default = yes", default = 'yes')
-    parser.add_argument("-cc", "--ClassCompatibility", help = "Input: either -cc yes or -cc -no. If no, consider all \
+    parser.add_argument("-cc", "--ClassCompatibility", help = "Input: either -cc yes or -cc no. If no, consider all \
                         interactions. If yes, consider only class compatible interactions. default = yes", default = 'yes')
     parser.add_argument("-sr", "--SolventRadius", help = "Input example: -sr 1.6. Solvent molecule radius. Decreasing this \
                         value would require atoms to be closer together to interact. default = 1.4", default = '1.4')
@@ -46,6 +48,8 @@ def main():
                     A consequence of this is a longer runtime. default = []", default = [])
     parser.add_argument("-fp", "--FilePath", help = "Input example: /home/steven/. File path of PDB file. \
                     The default path is your current directory. default = ./", default = "./")
+    parser.add_argument("-o", "--outputFile", help = "Output example: /home/steven/intercaat_ouput.txt \
+                    The default is no output file", default = "")
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -61,6 +65,7 @@ def main():
     arg7 = float(args.SolventRadius)
     arg8 = args.VoronoiInclude
     arg9 = args.FilePath
+    outputName = args.outputFile
     if arg8 != []:
         arg8 = arg8.split(',')
 
@@ -130,14 +135,17 @@ def main():
     print('  Query Chain     |Interacting Chains| Dist | AtomClasses')
     for line in newMatch:
         print(line)
-    pdb = PDBFileName.replace(".pdb","")
-    with open(f"{pdb}_intercaat_output.txt", "w+") as f:
-        f.write("Res #   Interactions\n")
-        for res, ints in zip(newInteractionRes, newInteractions):
-            f.write(f"{res} {ints[0]} {ints[1]}\n")
-        f.write("Query Chain    |Interacting Chains| Dist | AtomClasses\n")
-        for i in newMatch:
-            f.write(i+"\n")
+    
+    if len(outputName) > 0:
+        if os.path.exists(outputName):
+            pdb = PDBFileName.replace(".pdb","")
+            with open(outputName, "w+") as f:
+                f.write("Res #   Interactions\n")
+                for res, ints in zip(newInteractionRes, newInteractions):
+                    f.write(f"{res} {ints[0]} {ints[1]}\n")
+                f.write("Query Chain    |Interacting Chains| Dist | AtomClasses\n")
+                for i in newMatch:
+                    f.write(i+"\n")
     return
      
     
